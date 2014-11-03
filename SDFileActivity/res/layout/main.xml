@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <EditText
+        android:id="@+id/addedt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="请输入要保存的文字！"
+        android:textSize="12sp" />
+
+    <Button
+        android:id="@+id/addbtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="写入" />
+
+    <Button
+        android:id="@+id/showbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="读出" />
+
+    <TextView
+        android:id="@+id/showtv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="出入内容" />
+
+</LinearLayout>

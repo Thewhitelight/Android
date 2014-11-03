@@ -1,0 +1,8 @@
+<resources>
+
+    <string name="app_name">ViewPagerActivity</string>
+    <string name="viewpager1">ViewPager1</string>
+    <string name="viewpager2">ViewPager2</string>
+    <string name="viewpager3">ViewPager3</string>
+
+</resources>
