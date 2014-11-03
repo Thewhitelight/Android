@@ -29,6 +29,10 @@ public class FileService {
 		// TODO Auto-generated method stub
 		FileInputStream inputSream = null;
 		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+		/**
+		 * Environment.getExternalStorageDirectory()得到内存路径 fileName 文件名称
+		 * Environment.getExternalStorageState()判断内存卡是否存在
+		 * */
 		File file = new File(Environment.getExternalStorageDirectory(),
 				fileName);
 		if (Environment.MEDIA_MOUNTED.equals(Environment
@@ -65,6 +69,9 @@ public class FileService {
 		return new String(outputStream.toByteArray());
 	}
 
+	/**
+	 * fileName 文件名称 content 文件内容
+	 * */
 	public boolean saveContentToSdcard(String fileName, String content) {
 		boolean flag = false;
 		// TODO Auto-generated method stub
@@ -93,6 +100,9 @@ public class FileService {
 					}
 				}
 			}
+		} else {
+			Toast.makeText(context, "Please input SD card", Toast.LENGTH_SHORT)
+					.show();
 		}
 		return flag;
 	}
