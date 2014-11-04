@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/qq"
+    android:orientation="vertical" >
+<TextView 
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:textSize="40dp"
+    android:background="@drawable/qq"
+    android:text="对话框演示"/>
+<EditText 
+    android:id="@+id/EditText1"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:text="Hello World"/>
+<Button 
+    android:id="@+id/Button"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:textSize="30dp"
+    android:background="#3B3B3B"
+    android:text="打开对话框"/>    
+
+</LinearLayout>

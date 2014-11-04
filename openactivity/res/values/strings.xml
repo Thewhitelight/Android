@@ -1,0 +1,9 @@
+<resources>
+
+    <string name="app_name">测试</string>
+    <string name="btn_text1">打开一个新的activity(显示Intent方法1)</string>
+    <string name="btn_text2">打开一个新的activity(显示Intent方法2)</string>
+    <string name="btn_text3">打开一个新的activity(显示Intent方法3)</string>
+    <string name="btn_text4">打开一个新的activity(显示Intent方法4)</string>
+    <string name="text_txt">恭喜你，试验成功</string>
+</resources>
