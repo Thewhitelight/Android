@@ -46,7 +46,7 @@ public class MainActivity extends Activity
 			URL url = new URL(data);
 			//获得HTTPConnection网络连接对象
 			HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-			connection.setConnectTimeout(5*1000);
+			//connection.setConnectTimeout(5*1000);
 			connection.setDoInput(true);
 			connection.connect();
 			//得到输入流

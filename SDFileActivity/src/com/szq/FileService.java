@@ -21,11 +21,7 @@ public class FileService {
 		this.context = context;
 	}
 
-	public FileService() {
-		// TODO Auto-generated constructor stub
-	}
-
-	public String getFileFromSdcard(String fileName) {
+	public String getContentSdcard(String fileName) {
 		// TODO Auto-generated method stub
 		FileInputStream inputSream = null;
 		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
@@ -72,7 +68,7 @@ public class FileService {
 	/**
 	 * fileName 文件名称 content 文件内容
 	 * */
-	public boolean saveContentToSdcard(String fileName, String content) {
+	public boolean saveContentSdcard(String fileName, String content) {
 		boolean flag = false;
 		// TODO Auto-generated method stub
 		FileOutputStream fileOutputStream = null;

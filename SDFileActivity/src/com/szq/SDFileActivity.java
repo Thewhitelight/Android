@@ -4,7 +4,6 @@ import com.example.sdfileactivity.R;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -12,7 +11,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class SDFileActivity extends Activity {
-	private final static String TAG = "SDFileActivity";
 	private EditText addedt;
 	private Button addbtn;
 	private Button showbtn;
@@ -50,14 +48,14 @@ public class SDFileActivity extends Activity {
 		// TODO Auto-generated method stub
 		String str = addedt.getText().toString();
 		FileService fileService = new FileService(SDFileActivity.this);
-		boolean flag = fileService.saveContentToSdcard("shizhiqiang.txt", str);
-		Log.i(TAG, "--->>" + flag);
+		fileService.saveContentSdcard("test.txt", str);
+
 	}
 
 	private void readFile() {
 		// TODO Auto-generated method stub
 		FileService fileService = new FileService(SDFileActivity.this);
-		String str = fileService.getFileFromSdcard("shizhiqiang.txt");
+		String str = fileService.getContentSdcard("test.txt");
 		showtv.setText(str);
 	}
 }
