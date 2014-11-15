@@ -2,21 +2,18 @@ package com.szq;
 
 import java.io.IOException;
 
-import org.apache.http.HttpRequest;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.impl.conn.DefaultClientConnection;
 import org.apache.http.util.EntityUtils;
 
 import com.example.httpclient.R;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.os.DeadObjectException;
 import android.widget.TextView;
 
 public class HttpClientGet extends Activity {

@@ -17,6 +17,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+/**
+ * @author SZQ 通过get方式给服务器上传数据，并读取回本地。
+ */
 public class GetContent extends Activity {
 	private final String TAG = "GetContent";
 

@@ -19,6 +19,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+/**
+ * @author SZQ 通过post方式给服务器上传数据，并读取回本地。
+ */
 public class PostContent extends Activity {
 	private final String TAG = "DirectContent";
 
@@ -43,7 +46,7 @@ public class PostContent extends Activity {
 				// 使用HttpURLConnection打开连接
 				HttpURLConnection urlConn = (HttpURLConnection) url
 						.openConnection();
-				// post请求，所以设置为true
+				// 输入输出流设置为true
 				urlConn.setDoOutput(true);
 				urlConn.setDoInput(true);
 				urlConn.setRequestMethod("POST");// urlconnection默认为get方式，所以在这里将请求方式设置为post
@@ -56,7 +59,7 @@ public class PostContent extends Activity {
 				DataOutputStream out = new DataOutputStream(
 						urlConn.getOutputStream());
 				String content = "par="
-						+ URLEncoder.encode("ABCDEFG", "gb2312");// 要上传的参数
+						+ URLEncoder.encode("ABCDEFG", "gb2312");// 要上传的参数及编码方式
 				out.writeBytes(content);// 将要上传的内容写入流中
 				out.flush();// 刷新
 				out.close();
