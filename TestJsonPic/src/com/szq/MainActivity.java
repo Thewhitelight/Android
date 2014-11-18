@@ -1,8 +1,10 @@
-package com.example.testjsonpic;
+package com.szq;
 
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+
+import com.example.testjsonpic.R;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -46,7 +48,7 @@ public class MainActivity extends Activity
 			URL url = new URL(data);
 			//获得HTTPConnection网络连接对象
 			HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-			//connection.setConnectTimeout(5*1000);
+			connection.setConnectTimeout(5*1000);//与请求网址的服务器建立连接的超时时间
 			connection.setDoInput(true);
 			connection.connect();
 			//得到输入流
