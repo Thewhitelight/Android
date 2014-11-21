@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <EditText
+        android:id="@+id/edt_ip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/btn_start"
+        android:layout_toRightOf="@+id/textView1"
+        android:ems="10"
+        android:inputType="text"
+        android:text="@string/edt_ip" >
+
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/btn_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/edt_ip"
+        android:layout_alignParentRight="true"
+        android:text="@string/start"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btn_start"
+        android:layout_alignBottom="@+id/btn_start"
+        android:layout_alignParentLeft="true"
+        android:text="@string/tv_ip" />
+
+    <EditText
+        android:id="@+id/edt_list"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/edt_name" 
+        android:hint="@string/list"
+        android:inputType="none"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <EditText
+        android:id="@+id/edt_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/edt_list"
+        android:layout_toLeftOf="@+id/btn_send"
+        android:ems="20"
+        android:hint="@string/conent" />
+
+    <Button
+        android:id="@+id/btn_send"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/edt_message"
+        android:text="@string/send" />
+
+    <EditText
+        android:id="@+id/edt_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/edt_ip"
+        android:layout_below="@+id/edt_ip"
+        android:layout_toRightOf="@+id/textView1"
+        android:ems="10"
+        android:inputType="text"
+        android:text="@string/edt_name"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/edt_name"
+        android:layout_toLeftOf="@+id/edt_name"
+        android:text="@string/username" />
+
+    <Button
+        android:id="@+id/btn_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/edt_name"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/textView1"
+        android:text="@string/end"
+        android:textSize="12sp" />
+
+</RelativeLayout>
