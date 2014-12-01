@@ -5,8 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.example.listview.R;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,7 +13,8 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.Toast;
+
+import com.example.listview.R;
 
 public class Main extends Activity {
 	private String[] title = { "姓名", "性别", "年龄", "居住地", "邮箱" };
@@ -35,7 +34,6 @@ public class Main extends Activity {
 			listItem.put("image", R.drawable.ic_launcher);
 			listItem.put("title", title[i]);
 			listItem.put("subtilte", subtitle[i]);
-			//listItem.put("time", R.id.digitalClock1);
 			listItems.add(listItem);
 
 		}
@@ -49,16 +47,14 @@ public class Main extends Activity {
 
 				Intent intent = new Intent();
 				if (position == 0) {
-
 					intent.setClass(Main.this, Activity01.class);
+					intent.putExtra("postion", position);
+					intent.putExtra("title", subtitle[0]);
 					Main.this.startActivity(intent);
 				} else if (position == 1) {
 					intent.setClass(Main.this, Activity01.class);
 					Main.this.startActivity(intent);
 				}
-
-				// Toast.makeText(getApplication(),"您选择了标题：" + title[position] +
-				// "内容："+subtitle[position], Toast.LENGTH_LONG).show();
 			}
 		});
 	}
