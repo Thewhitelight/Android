@@ -55,7 +55,7 @@ public class PCClient extends JFrame implements Runnable, ActionListener {
 		super("PCClient");
 
 		jLable_username.setText("昵称");
-		JTextField_username.setText("V");
+		JTextField_username.setText("PC");
 		JButton_login.setText("进入聊天室");
 		JButton_leave.setText("退出聊天室");
 		jTextArea1.setText("");
@@ -98,7 +98,7 @@ public class PCClient extends JFrame implements Runnable, ActionListener {
 		if (e.getSource() == JButton_login) {
 			name = JTextField_username.getText();
 			ip = jTextField_address.getText();
-			if (name != "V" && ip != null) {
+			if (name != "PC" && ip != null) {
 				try {
 					socket = new Socket(ip, PORT);
 					in = new DataInputStream(socket.getInputStream());

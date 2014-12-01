@@ -28,7 +28,7 @@ public class Server extends JFrame implements ActionListener {
 	// 声明ServerThread线程类对象
 	ServerThead serverThead;
 	Thread thread;
-
+	//初始化
 	public Server() {
 		// TODO Auto-generated constructor stub
 		super("Server");
