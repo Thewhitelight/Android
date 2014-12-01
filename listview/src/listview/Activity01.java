@@ -15,9 +15,9 @@ public class Activity01 extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main1);
 		tv = (TextView) findViewById(R.id.textView1);
-		long postion = getIntent().getLongExtra("postion", 0);
-		if (postion == 0) {
-			tv.setText(getIntent().getStringExtra("title"));
+		int postion = getIntent().getIntExtra("postion", 0);
+		for (int i = 0; i <= postion; i++) {
+			tv.setText(getIntent().getStringExtra("subtitle"));
 		}
 	}
 }

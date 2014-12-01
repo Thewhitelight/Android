@@ -18,8 +18,8 @@ import com.example.listview.R;
 
 public class Main extends Activity {
 	private String[] title = { "姓名", "性别", "年龄", "居住地", "邮箱" };
-	private String[] subtitle = { "雨松MOMO", "男", "25", "北京",
-			"xuanyusong@gmail.com" };
+	private String[] subtitle = { "Tom", "男", "22", "浙江",
+			"szq921618920@gmail.com" };
 	ListView lv = null;
 
 	@Override
@@ -44,19 +44,14 @@ public class Main extends Activity {
 		lv.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> adapterView, View view,
 					int position, long id) {
-
-				Intent intent = new Intent();
-				if (position == 0) {
-					intent.setClass(Main.this, Activity01.class);
-					intent.putExtra("postion", position);
-					intent.putExtra("title", subtitle[0]);
-					Main.this.startActivity(intent);
-				} else if (position == 1) {
-					intent.setClass(Main.this, Activity01.class);
-					Main.this.startActivity(intent);
+				Intent i = new Intent();
+				i.setClass(getApplicationContext(), Activity01.class);
+				i.putExtra("postion", position);
+				for (int j = 0; j <= position; j++) {
+					i.putExtra("subtitle", subtitle[j]);
 				}
+				Main.this.startActivity(i);
 			}
 		});
 	}
-
 }
