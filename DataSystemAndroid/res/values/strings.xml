@@ -1,0 +1,17 @@
+<resources>
+
+    <string name="app_name">DataSystemAndroid</string>
+    <string name="btn_add">增加数据</string>
+    <string name="btn_del">删除数据</string>
+    <string name="btn_update">更新数据</string>
+    <string name="btn_sel">查询数据</string>
+    <string name="btn_selall">显示所有数据</string>
+    <string name="et_inst_id">仪器编号</string>
+    <string name="et_inst_name">仪器名称</string>
+    <string name="et_inst_type">仪器类型</string>
+    <string name="et_user_name">使用单位</string>
+    <string name="et_buy_date">购置日期</string>
+    <string name="btn_comfirm">确定</string>
+    <string name="btn_cancel">取消</string>
+
+</resources>
