@@ -27,6 +27,11 @@ public class MainActivity extends Activity implements OnClickListener {
 	private Button btn_sel;
 	private Button btn_update;
 	private Button btn_selall;
+	private EditText et_inst_id;
+	private EditText et_inst_name;
+	private EditText et_inst_type;
+	private EditText et_user_name;
+	private EditText et_buy_date;
 	private ListView lv_data;
 	private Dialog dialog;
 	private SimpleAdapter adapter;
@@ -39,6 +44,9 @@ public class MainActivity extends Activity implements OnClickListener {
 		init();
 	}
 
+	/**
+	 * 显示所有数据
+	 */
 	private void showAllInfo() {
 		// TODO Auto-generated method stub
 		List<HashMap<String, String>> list = new ArrayList<HashMap<String, String>>();
@@ -61,11 +69,11 @@ public class MainActivity extends Activity implements OnClickListener {
 		dialogWindow.setGravity(Gravity.CENTER);
 		dialogWindow.setAttributes(wl);
 
-		EditText et_inst_id = (EditText) findViewById(R.id.et_inst_id);
-		EditText et_inst_name = (EditText) findViewById(R.id.et_inst_name);
-		EditText et_inst_type = (EditText) findViewById(R.id.et_inst_type);
-		EditText et_user_name = (EditText) findViewById(R.id.et_user_name);
-		EditText et_buy = (EditText) findViewById(R.id.et_buy_date);
+		et_inst_id = (EditText) dialog.findViewById(R.id.et_add_inst_id);
+		et_inst_name = (EditText) dialog.findViewById(R.id.et_add_inst_name);
+		et_inst_type = (EditText) dialog.findViewById(R.id.et_add_inst_type);
+		et_user_name = (EditText) dialog.findViewById(R.id.et_add_user_name);
+		et_buy_date = (EditText) dialog.findViewById(R.id.et_add_buy_date);
 		Button btn_addcomfirm = (Button) dialog
 				.findViewById(R.id.btn_addcomfirm);
 		btn_addcomfirm.setOnClickListener(this);
@@ -74,6 +82,9 @@ public class MainActivity extends Activity implements OnClickListener {
 		dialog.show();
 	}
 
+	/**
+	 * 通过inst_id删除数据Dialog
+	 */
 	private void deleteShowDialog() {
 		// TODO Auto-generated method stub
 		dialog = new Dialog(MainActivity.this);
@@ -86,13 +97,16 @@ public class MainActivity extends Activity implements OnClickListener {
 		Button btn_cancel = (Button) dialog.findViewById(R.id.btn_cancel);
 		btn_cancel.setOnClickListener(this);
 		dialog.show();
-		EditText et_inst_id = (EditText) findViewById(R.id.et_inst_id);
+		et_inst_id = (EditText) dialog.findViewById(R.id.et_del_inst_id);
 		Button btn_delcomfirm = (Button) dialog
 				.findViewById(R.id.btn_delcomfirm);
 		btn_delcomfirm.setOnClickListener(this);
 
 	}
 
+	/**
+	 * 通过instead_id查询数据Dialog
+	 */
 	private void selShowDialog() {
 		// TODO Auto-generated method stub
 		dialog = new Dialog(MainActivity.this);
@@ -104,13 +118,16 @@ public class MainActivity extends Activity implements OnClickListener {
 		dialogWindow.setAttributes(wl);
 		Button btn_cancel = (Button) dialog.findViewById(R.id.btn_cancel);
 		btn_cancel.setOnClickListener(this);
-		EditText et_inst_id = (EditText) dialog.findViewById(R.id.et_inst_id);
+		et_inst_id = (EditText) dialog.findViewById(R.id.et_sel_inst_id);
 		Button btn_selcomfirm = (Button) dialog
 				.findViewById(R.id.btn_selcomfirm);
 		btn_selcomfirm.setOnClickListener(this);
 		dialog.show();
 	}
 
+	/**
+	 * 通过inst_id更新数据Dialog
+	 */
 	private void updateShowDialog() {
 		// TODO Auto-generated method stub
 		dialog = new Dialog(MainActivity.this);
@@ -122,21 +139,24 @@ public class MainActivity extends Activity implements OnClickListener {
 		dialogWindow.setAttributes(wl);
 		Button btn_cancel = (Button) dialog.findViewById(R.id.btn_cancel);
 		btn_cancel.setOnClickListener(this);
-		EditText et_inst_id = (EditText) dialog.findViewById(R.id.et_inst_id);
+		et_inst_id = (EditText) dialog.findViewById(R.id.et_update_inst_id);
 		Button btn_updatecomfirm = (Button) dialog
 				.findViewById(R.id.btn_updatecomfirm);
 		btn_updatecomfirm.setOnClickListener(this);
 		dialog.show();
 	}
 
+	/**
+	 * 初始化主界面
+	 */
 	private void init() {
 		// TODO Auto-generated method stub
-		btn_add = (Button) findViewById(R.id.btn_add);
-		btn_del = (Button) findViewById(R.id.btn_del);
-		btn_sel = (Button) findViewById(R.id.btn_sel);
-		btn_update = (Button) findViewById(R.id.btn_update);
-		btn_selall = (Button) findViewById(R.id.btn_selall);
-		lv_data = (ListView) findViewById(R.id.lv_data);
+		btn_add = (Button) this.findViewById(R.id.btn_add);
+		btn_del = (Button) this.findViewById(R.id.btn_del);
+		btn_sel = (Button) this.findViewById(R.id.btn_sel);
+		btn_update = (Button) this.findViewById(R.id.btn_update);
+		btn_selall = (Button) this.findViewById(R.id.btn_selall);
+		lv_data = (ListView) this.findViewById(R.id.lv_data);
 		btn_add.setOnClickListener(this);
 		btn_del.setOnClickListener(this);
 		btn_sel.setOnClickListener(this);
