@@ -30,8 +30,19 @@
             android:id="@+id/img_pic"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:contentDescription="this is a pic"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            android:contentDescription="this is a pic" />
+
+        <Button
+            android:id="@+id/btn_json"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="获取JSON数据" />
+
+        <TextView
+            android:id="@+id/tv_json"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
 </ScrollView>

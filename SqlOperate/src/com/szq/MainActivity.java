@@ -8,7 +8,6 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
@@ -73,7 +72,6 @@ public class MainActivity extends Activity implements OnClickListener {
 			int age = cursor.getInt(cursor.getColumnIndex("age"));
 			String str = "ID:" + id + " NAME:" + name + " AGE:" + age;
 			list.add(str);
-			Log.i(TAG, ">>>" + str + "<<<");
 
 		}
 		cursor.close();

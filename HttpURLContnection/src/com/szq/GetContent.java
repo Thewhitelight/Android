@@ -63,7 +63,7 @@ public class GetContent extends Activity {
 				if (resultData != null) {
 					mTextView.setText(resultData);
 				} else {
-					mTextView.setText("读取的内容为NULL");
+					mTextView.setText("content is null");
 				}
 			} catch (IOException e) {
 				Log.e(TAG, "IOException");

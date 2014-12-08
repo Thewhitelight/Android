@@ -8,6 +8,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 
+import org.w3c.dom.Text;
+
 import com.example.httpget.R;
 
 import android.app.Activity;
@@ -21,21 +23,23 @@ import android.widget.TextView;
 
 public class HttpGetActivity extends Activity {
 	private Button btn_show;
+	private TextView tv_add;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
+		tv_add = (TextView) findViewById(R.id.tv_add);
 		btn_show = (Button) findViewById(R.id.btn_show);
 		btn_show.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				new AsyncTask<String, Void, Void>() {
+				new AsyncTask<String, Integer, String>() {
 
 					@Override
-					protected Void doInBackground(String... params) {
+					protected String doInBackground(String... params) { // 网络操作
 						// TODO Auto-generated method stub
 						try {
 							URL url = new URL(params[0]);
@@ -44,13 +48,15 @@ public class HttpGetActivity extends Activity {
 							InputStreamReader in = new InputStreamReader(is,
 									"utf-8");
 							BufferedReader buffer = new BufferedReader(in);
-							String inputLine;
+							String inputLine = null;
 							while ((inputLine = buffer.readLine()) != null) {
 								Log.i("***AsyncTask****", inputLine);
+								return inputLine;
 							}
 							buffer.close();
 							in.close();
 							is.close();
+
 						} catch (MalformedURLException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -60,6 +66,12 @@ public class HttpGetActivity extends Activity {
 						}
 						return null;
 					}
+
+					@Override
+					protected void onPostExecute(String result) { // 更新前台UI
+						super.onPostExecute(result);
+						tv_add.setText(result);
+					};
 
 				}.execute("http://fanyi.youdao.com/openapi.do?keyfrom=testhttpclient&key=1320375195&type=data&doctype=json&version=1.1&q=good");
 			}

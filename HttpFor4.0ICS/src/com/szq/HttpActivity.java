@@ -21,7 +21,7 @@ public class HttpActivity extends Activity {
 	private Button btn;
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	public void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
@@ -40,11 +40,11 @@ public class HttpActivity extends Activity {
 	}
 
 	Handler handler = new Handler() {
-		public void handleMessage(Message msg) {
+		public void handleMessage(Message msg) { // 必须重写此方法，用于接收数据
 			super.handleMessage(msg);
-			switch (msg.what) {// 更新UI
+			switch (msg.what) { // 更新UI
 			case 1:
-				tv.setText(msg.getData().getString("result"));
+				tv.setText(msg.getData().getString("result"));// 获取Message的值
 				break;
 			}
 
@@ -79,12 +79,12 @@ public class HttpActivity extends Activity {
 					input.close();
 					con.disconnect();
 					if (result != null) {
-						Message msg = new Message();
-						msg.what = 1;
-						Bundle b = new Bundle();
+						Message msg = new Message();// 新建Message对象
+						Bundle b = new Bundle();// 绑定数据
+						msg.what = 1;// 自定义消息代码，防止和其他handler混淆
 						b.putString("result", result);
 						msg.setData(b);
-						handler.sendMessage(msg);
+						handler.sendMessage(msg);// 将Message传给handler
 					} else {
 						tv.setText("读取内容为空");
 					}
