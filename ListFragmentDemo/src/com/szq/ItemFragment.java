@@ -53,6 +53,7 @@ public class ItemFragment extends ListFragment {
 		// TODO Auto-generated method stub
 		super.onListItemClick(l, v, position, id);
 		String itemPostion = adapter.getItem(position);
+		
 		transition = manager.beginTransaction();
 		ContentFragment contentFragment = new ContentFragment();
 		transition.replace(R.id.right, contentFragment, "ContentFragment");
@@ -60,6 +61,7 @@ public class ItemFragment extends ListFragment {
 		b.putString("itemPostion", itemPostion);
 		contentFragment.setArguments(b);
 		transition.commit();
+		
 		Toast.makeText(getActivity(), "" + itemPostion, Toast.LENGTH_SHORT)
 				.show();
 	}
