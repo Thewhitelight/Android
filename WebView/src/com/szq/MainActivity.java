@@ -11,8 +11,9 @@ import com.example.webview.R;
 
 public class MainActivity extends Activity {
 	private WebView webview;
-	static final String URL = "http://3g.ifeng.com";
+	static final String URL = "file:///android_asset/test.html";// 加载本地assets文件夹中的html页面
 
+	// static final String URL="http://3g.ifeng.com";//加载网络页面
 	@SuppressLint({ "SetJavaScriptEnabled", "JavascriptInterface" })
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +43,11 @@ public class MainActivity extends Activity {
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		// TODO Auto-generated method stub
-		return super.onKeyDown(keyCode, event);
+		// 加入回退
+		if ((keyCode == KeyEvent.KEYCODE_BACK) && webview.canGoBack()) {
+			webview.goBack();
+			return true;
+		}
+		return false;
 	}
 }
