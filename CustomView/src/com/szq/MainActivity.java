@@ -27,9 +27,10 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Toast.makeText(getApplicationContext(),
-						"Äúµã»÷ÁË" + getApplicationInfo(), Toast.LENGTH_SHORT)
+						"Ã„ÃºÂµÃ£Â»Ã·ÃÃ‹" + getApplicationInfo(), Toast.LENGTH_SHORT)
 						.show();
 				view.setX(100);
+				view.setY(-100);
 			}
 		});
 	}
