@@ -52,17 +52,17 @@ public class ItemFragment extends ListFragment {
 	public void onListItemClick(ListView l, View v, int position, long id) {
 		// TODO Auto-generated method stub
 		super.onListItemClick(l, v, position, id);
-		String itemPostion = adapter.getItem(position);
-		
+		int itemPostion = position;
+		String itemPosition = adapter.getItem(position);
 		transition = manager.beginTransaction();
 		ContentFragment contentFragment = new ContentFragment();
 		transition.replace(R.id.right, contentFragment, "ContentFragment");
 		Bundle b = new Bundle();
-		b.putString("itemPostion", itemPostion);
+		b.putInt("itemPostion", itemPostion);
 		contentFragment.setArguments(b);
 		transition.commit();
-		
-		Toast.makeText(getActivity(), "" + itemPostion, Toast.LENGTH_SHORT)
+
+		Toast.makeText(getActivity(), "" + itemPosition, Toast.LENGTH_SHORT)
 				.show();
 	}
 }

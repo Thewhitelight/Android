@@ -22,7 +22,7 @@ public class ContentFragment extends Fragment {
 		// TODO Auto-generated method stub
 		View mView = inflater.inflate(R.layout.right, container, false);
 		TextView tv = (TextView) mView.findViewById(R.id.tv);
-		tv.setText("" + getArguments().getString("itemPostion"));
+		tv.setText("" + getArguments().getInt("itemPostion"));
 		return mView;
 	}
 }
