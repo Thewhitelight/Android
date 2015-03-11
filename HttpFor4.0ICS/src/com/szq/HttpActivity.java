@@ -85,15 +85,13 @@ public class HttpActivity extends Activity {
 						b.putString("result", result);
 						msg.setData(b);
 						handler.sendMessage(msg);// 将Message传给handler
-					} else {
-						tv.setText("读取内容为空");
-					}
+					} 
 				} catch (Exception e) {
 					// TODO: handle exception
-					tv.setText(e.getMessage().toString());
+					Log.i("********", "无网络");
 				}
 			} else {
-				tv.setText("URL为空");
+				Log.i("******", "URL为空");
 			}
 		}
 	};
