@@ -1,0 +1,7 @@
+<resources>
+
+    <string name="app_name">FloatingButton</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_clicked">Action clicked</string>
+
+</resources>
