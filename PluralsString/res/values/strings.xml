@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">PluralsString</string>
+    <string name="action_settings">Settings</string>
+
+    <plurals name="hello_world">
+        <item quantity="one">one person</item>
+        <item quantity="other">%d persons</item>
+    </plurals>
+
+</resources>
