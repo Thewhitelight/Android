@@ -1,5 +1,7 @@
 package com.example.viewpager;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -7,6 +9,7 @@ import com.example.picautocarousel.R;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -14,9 +17,12 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 import android.widget.ImageView.ScaleType;
 
 public class MainActivity extends Activity implements OnPageChangeListener {
@@ -38,12 +44,13 @@ public class MainActivity extends Activity implements OnPageChangeListener {
 	/**
 	 * 图片资源id
 	 */
-	private int[] imgIdArray;
-
+	private List<Drawable> list;
+	private ImageView imageViewTips, imageView;
 	Timer mTimer;
 	TimerTask mTask;
 	int pageIndex = 1;
 	boolean isTaskRun;
+	int x;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -51,35 +58,50 @@ public class MainActivity extends Activity implements OnPageChangeListener {
 		setContentView(R.layout.activity_main);
 		ViewGroup group = (ViewGroup) findViewById(R.id.viewGroup);
 		viewPager = (ViewPager) findViewById(R.id.viewPager);
-
+		list = new ArrayList<Drawable>();
 		// 载入图片资源ID
-		imgIdArray = new int[] { R.drawable.item01, R.drawable.item02,
-				R.drawable.item03, R.drawable.item04, R.drawable.item05,
-				R.drawable.item06, R.drawable.item07, R.drawable.item08 };
-
+		list.add(getResources().getDrawable(R.drawable.item01));
+		list.add(getResources().getDrawable(R.drawable.item02));
+		list.add(getResources().getDrawable(R.drawable.item03));
+		list.add(getResources().getDrawable(R.drawable.item04));
+		list.add(getResources().getDrawable(R.drawable.item05));
 		// 将点点加入到ViewGroup中
-		tips = new ImageView[imgIdArray.length];
+		tips = new ImageView[list.size()];
 		for (int i = 0; i < tips.length; i++) {
-			ImageView imageView = new ImageView(this);
-			imageView.setLayoutParams(new LayoutParams(15, 15));
-			imageView.setScaleType(ScaleType.CENTER_CROP);
-
-			tips[i] = imageView;
+			imageViewTips = new ImageView(this);
+			LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+					15, 15);
+			params.setMargins(3, 0, 3, 0);// 左，上，右，下
+			imageViewTips.setLayoutParams(params);
+			imageViewTips.setScaleType(ScaleType.FIT_XY);
+			tips[i] = imageViewTips;
 			if (i == 0) {
 				tips[i].setBackgroundResource(R.drawable.page_indicator_focused);
 			} else {
 				tips[i].setBackgroundResource(R.drawable.page_indicator_unfocused);
 			}
-
-			group.addView(imageView);
+			group.addView(imageViewTips);
 		}
 
 		// 将图片装载到数组中
-		mImageViews = new ImageView[imgIdArray.length];
+		mImageViews = new ImageView[list.size()];
 		for (int i = 0; i < mImageViews.length; i++) {
-			ImageView imageView = new ImageView(this);
+
+			imageView = new ImageView(this);
 			mImageViews[i] = imageView;
-			imageView.setBackgroundResource(imgIdArray[i]);
+			imageView.setBackgroundDrawable(list.get(i));
+			final Message msg = Message.obtain();
+			msg.arg1 = i;
+			msg.what = 1;
+			mImageViews[i].setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+					mHandler.sendMessage(msg);
+				}
+			});
+
 		}
 
 		// 设置Adapter
@@ -88,7 +110,6 @@ public class MainActivity extends Activity implements OnPageChangeListener {
 		viewPager.setOnPageChangeListener(this);
 		// 设置ViewPager的默认项, 设置为长度的100倍，这样子开始就能往左滑动
 		viewPager.setCurrentItem((mImageViews.length) * 100);
-
 	}
 
 	/**
@@ -109,12 +130,17 @@ public class MainActivity extends Activity implements OnPageChangeListener {
 	}
 
 	// 处理EmptyMessage(0)
-	@SuppressLint("HandlerLeak")
-	Handler mHandler = new Handler() {
+
+	public Handler mHandler = new Handler() {
 		@Override
 		public void handleMessage(Message msg) {
 			// TODO Auto-generated method stub
 			setCurrentItem();
+			if (msg.what == 1) {
+				int i = msg.arg1;
+				Toast.makeText(getApplicationContext(), i + "",
+						Toast.LENGTH_SHORT).show();
+			}
 		}
 	};
 
@@ -124,7 +150,7 @@ public class MainActivity extends Activity implements OnPageChangeListener {
 	private void setCurrentItem() {
 		if (pageIndex == 0) {
 			pageIndex = 1;
-		} else if (pageIndex == imgIdArray.length) {
+		} else if (pageIndex == list.size()) {
 			pageIndex = 1;
 		}
 		viewPager.setCurrentItem(pageIndex, false);// 取消动画
@@ -152,11 +178,6 @@ public class MainActivity extends Activity implements OnPageChangeListener {
 		stopTask();
 	}
 
-	/**
-	 * 
-	 * @author xiaanming
-	 *
-	 */
 	public class MyAdapter extends PagerAdapter {
 
 		@Override
@@ -180,9 +201,11 @@ public class MainActivity extends Activity implements OnPageChangeListener {
 		 * 载入图片进去，用当前的position 除以 图片数组长度取余数是关键
 		 */
 		@Override
-		public Object instantiateItem(View container, int position) {
+		public Object instantiateItem(View container, final int position) {
+
 			((ViewPager) container).addView(mImageViews[position
 					% mImageViews.length], 0);
+
 			return mImageViews[position % mImageViews.length];
 		}
 
