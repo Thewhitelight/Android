@@ -5,9 +5,6 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import com.example.picautocarousel.R;
-
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -19,11 +16,12 @@ import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.Toast;
-import android.widget.ImageView.ScaleType;
+
+import com.example.picautocarousel.R;
 
 public class MainActivity extends Activity implements OnPageChangeListener {
 	/**
@@ -50,7 +48,6 @@ public class MainActivity extends Activity implements OnPageChangeListener {
 	TimerTask mTask;
 	int pageIndex = 1;
 	boolean isTaskRun;
-	int x;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -86,22 +83,19 @@ public class MainActivity extends Activity implements OnPageChangeListener {
 		// 将图片装载到数组中
 		mImageViews = new ImageView[list.size()];
 		for (int i = 0; i < mImageViews.length; i++) {
-
 			imageView = new ImageView(this);
 			mImageViews[i] = imageView;
 			imageView.setBackgroundDrawable(list.get(i));
-			final Message msg = Message.obtain();
+			final Message msg = handler.obtainMessage();
 			msg.arg1 = i;
-			msg.what = 1;
-			mImageViews[i].setOnClickListener(new OnClickListener() {
-
+			imageView.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
-					mHandler.sendMessage(msg);
+					handler.sendMessage(msg.obtain(msg));// 避免This message is
+															// already in use.
 				}
 			});
-
 		}
 
 		// 设置Adapter
@@ -135,12 +129,19 @@ public class MainActivity extends Activity implements OnPageChangeListener {
 		@Override
 		public void handleMessage(Message msg) {
 			// TODO Auto-generated method stub
-			setCurrentItem();
-			if (msg.what == 1) {
-				int i = msg.arg1;
-				Toast.makeText(getApplicationContext(), i + "",
-						Toast.LENGTH_SHORT).show();
+			if (msg.what == 0) {
+				setCurrentItem();
 			}
+		}
+	};
+	public Handler handler = new Handler() {
+		@Override
+		public void handleMessage(Message msg) {
+			// TODO Auto-generated method stub
+			int i = msg.arg1;
+			Toast.makeText(getApplicationContext(), i + "", Toast.LENGTH_SHORT)
+					.show();
+
 		}
 	};
 
