@@ -30,17 +30,17 @@ public class MainActivity extends Activity implements OnPageChangeListener {
 	private ViewPager viewPager;
 
 	/**
-	 * ×°µãµãµÄImageViewÊı×é
+	 * è£…ç‚¹ç‚¹çš„ImageViewæ•°ç»„
 	 */
 	private ImageView[] tips;
 
 	/**
-	 * ×°ImageViewÊı×é
+	 * è£…ImageViewæ•°ç»„
 	 */
 	private ImageView[] mImageViews;
 
 	/**
-	 * Í¼Æ¬×ÊÔ´id
+	 * å›¾ç‰‡èµ„æºid
 	 */
 	private List<Drawable> list;
 	private ImageView imageViewTips, imageView;
@@ -56,19 +56,19 @@ public class MainActivity extends Activity implements OnPageChangeListener {
 		ViewGroup group = (ViewGroup) findViewById(R.id.viewGroup);
 		viewPager = (ViewPager) findViewById(R.id.viewPager);
 		list = new ArrayList<Drawable>();
-		// ÔØÈëÍ¼Æ¬×ÊÔ´ID
+		// è½½å…¥å›¾ç‰‡èµ„æºID
 		list.add(getResources().getDrawable(R.drawable.item01));
 		list.add(getResources().getDrawable(R.drawable.item02));
 		list.add(getResources().getDrawable(R.drawable.item03));
 		list.add(getResources().getDrawable(R.drawable.item04));
 		list.add(getResources().getDrawable(R.drawable.item05));
-		// ½«µãµã¼ÓÈëµ½ViewGroupÖĞ
+		// å°†ç‚¹ç‚¹åŠ å…¥åˆ°ViewGroupä¸­
 		tips = new ImageView[list.size()];
 		for (int i = 0; i < tips.length; i++) {
 			imageViewTips = new ImageView(this);
 			LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
 					15, 15);
-			params.setMargins(3, 0, 3, 0);// ×ó£¬ÉÏ£¬ÓÒ£¬ÏÂ
+			params.setMargins(3, 0, 3, 0);// å·¦ï¼Œä¸Šï¼Œå³ï¼Œä¸‹
 			imageViewTips.setLayoutParams(params);
 			imageViewTips.setScaleType(ScaleType.FIT_XY);
 			tips[i] = imageViewTips;
@@ -80,7 +80,7 @@ public class MainActivity extends Activity implements OnPageChangeListener {
 			group.addView(imageViewTips);
 		}
 
-		// ½«Í¼Æ¬×°ÔØµ½Êı×éÖĞ
+		// å°†å›¾ç‰‡è£…è½½åˆ°æ•°ç»„ä¸­
 		mImageViews = new ImageView[list.size()];
 		for (int i = 0; i < mImageViews.length; i++) {
 			imageView = new ImageView(this);
@@ -92,22 +92,22 @@ public class MainActivity extends Activity implements OnPageChangeListener {
 				@Override
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
-					handler.sendMessage(msg.obtain(msg));// ±ÜÃâThis message is
+					handler.sendMessage(Message.obtain(msg));// é¿å…This message is
 															// already in use.
 				}
 			});
 		}
 
-		// ÉèÖÃAdapter
+		// è®¾ç½®Adapter
 		viewPager.setAdapter(new MyAdapter());
-		// ÉèÖÃ¼àÌı£¬Ö÷ÒªÊÇÉèÖÃµãµãµÄ±³¾°
+		// è®¾ç½®ç›‘å¬ï¼Œä¸»è¦æ˜¯è®¾ç½®ç‚¹ç‚¹çš„èƒŒæ™¯
 		viewPager.setOnPageChangeListener(this);
-		// ÉèÖÃViewPagerµÄÄ¬ÈÏÏî, ÉèÖÃÎª³¤¶ÈµÄ100±¶£¬ÕâÑù×Ó¿ªÊ¼¾ÍÄÜÍù×ó»¬¶¯
+		// è®¾ç½®ViewPagerçš„é»˜è®¤é¡¹, è®¾ç½®ä¸ºé•¿åº¦çš„100å€ï¼Œè¿™æ ·å­å¼€å§‹å°±èƒ½å¾€å·¦æ»‘åŠ¨
 		viewPager.setCurrentItem((mImageViews.length) * 100);
 	}
 
 	/**
-	 * ¿ªÆô¶¨Ê±ÈÎÎñ
+	 * å¼€å¯å®šæ—¶ä»»åŠ¡
 	 */
 	private void startTask() {
 		// TODO Auto-generated method stub
@@ -120,10 +120,10 @@ public class MainActivity extends Activity implements OnPageChangeListener {
 				mHandler.sendEmptyMessage(0);
 			}
 		};
-		mTimer.schedule(mTask, 2 * 1000, 2 * 1000);// ÕâÀïÉèÖÃ×Ô¶¯ÇĞ»»µÄÊ±¼ä£¬µ¥Î»ÊÇºÁÃë£¬2*1000±íÊ¾2Ãë
+		mTimer.schedule(mTask, 2 * 1000, 2 * 1000);// è¿™é‡Œè®¾ç½®è‡ªåŠ¨åˆ‡æ¢çš„æ—¶é—´ï¼Œå•ä½æ˜¯æ¯«ç§’ï¼Œ2*1000è¡¨ç¤º2ç§’
 	}
 
-	// ´¦ÀíEmptyMessage(0)
+	// å¤„ç†EmptyMessage(0)
 
 	public Handler mHandler = new Handler() {
 		@Override
@@ -146,7 +146,7 @@ public class MainActivity extends Activity implements OnPageChangeListener {
 	};
 
 	/**
-	 * ´¦ÀíPageµÄÇĞ»»Âß¼­
+	 * å¤„ç†Pageçš„åˆ‡æ¢é€»è¾‘
 	 */
 	private void setCurrentItem() {
 		if (pageIndex == 0) {
@@ -154,11 +154,11 @@ public class MainActivity extends Activity implements OnPageChangeListener {
 		} else if (pageIndex == list.size()) {
 			pageIndex = 1;
 		}
-		viewPager.setCurrentItem(pageIndex, false);// È¡Ïû¶¯»­
+		viewPager.setCurrentItem(pageIndex, false);// å–æ¶ˆåŠ¨ç”»
 	}
 
 	/**
-	 * Í£Ö¹¶¨Ê±ÈÎÎñ
+	 * åœæ­¢å®šæ—¶ä»»åŠ¡
 	 */
 	private void stopTask() {
 		// TODO Auto-generated method stub
@@ -199,7 +199,7 @@ public class MainActivity extends Activity implements OnPageChangeListener {
 		}
 
 		/**
-		 * ÔØÈëÍ¼Æ¬½øÈ¥£¬ÓÃµ±Ç°µÄposition ³ıÒÔ Í¼Æ¬Êı×é³¤¶ÈÈ¡ÓàÊıÊÇ¹Ø¼ü
+		 * è½½å…¥å›¾ç‰‡è¿›å»ï¼Œç”¨å½“å‰çš„position é™¤ä»¥ å›¾ç‰‡æ•°ç»„é•¿åº¦å–ä½™æ•°æ˜¯å…³é”®
 		 */
 		@Override
 		public Object instantiateItem(View container, final int position) {
@@ -237,7 +237,7 @@ public class MainActivity extends Activity implements OnPageChangeListener {
 	}
 
 	/**
-	 * ÉèÖÃÑ¡ÖĞµÄtipµÄ±³¾°
+	 * è®¾ç½®é€‰ä¸­çš„tipçš„èƒŒæ™¯
 	 * 
 	 * @param selectItems
 	 */
